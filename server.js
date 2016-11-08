@@ -9,6 +9,68 @@ app.use(bodyParser.urlencoded({	extended: true })); // support encoded bodies
 
 // routes will go here
 
+// ===============================
+// Josie's tests with GET and POST
+// see file simpleLoop.js to see
+// how server.js is accessed
+// ===============================
+
+// http://localhost:8080/simpleLoop
+app.get('/simpleLoop', function(req, res) {
+
+  var myArray = 
+  [ 
+    { firstName : "josie", lastName : "barth"},
+    { firstName : "jane", lastName : "smith"}
+  ]
+
+      // Allow cross-origin resource sharing
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+
+  res.send(myArray);
+
+});
+
+// http://localhost:8080/
+app.post('/', function(req, res) {
+
+    // Step 0: Allow cross-origin resource sharing
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    // Step 1: Process the data
+    theMessage = req.body.lorem;
+    console.log("Someone sent a message: " + theMessage);
+
+    // Step 2: Send a confirmation
+    res.send("Thanks for playing!");
+
+});
+
+// ===============================
+// Josie's tests with functions 
+// on the server side
+// this is probably bad practice? 
+// ===============================
+
+// http://localhost:8080/multiplication?x=4&y=2
+app.get('/multiplication', function(req, res) {
+  var x = req.param('x');
+  var y = req.param('y');
+
+  var mult = multiply(x, y);
+
+  console.log(mult);
+
+  res.send(mult + " josie's test");
+});
+
+function multiply(n, m) {
+    return (n * m);
+}
+
 // ====================================
 // URL PARAMETERS =====================
 // ====================================
