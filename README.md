@@ -22,6 +22,8 @@ then in a new tab on your terminal, cd to your folder "express-parameters"
 then run the command:
 $ python -m SimpleHTTPServer 
 
+by default, the python server is running on port 8000
+
 Now in your browser, go to localHost:8000, which will load index.html,
 and index.html calls functions in simpleLoop.js
 
@@ -30,7 +32,7 @@ simpleLoop.js makes GET and POST requests to the server in server.js
 KEY INSIGHT - DIFFERENT PORT NUMBERS
 
 simpleLoop.js is running on localHost:8000
-server.js running on localHost:8080 
+server.js running on localHost:5000 
 
 Thus through this simple program we can see the separation between client and server
 

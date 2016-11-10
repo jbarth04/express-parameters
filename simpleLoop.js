@@ -5,7 +5,7 @@
 // and run the command:
 // $ python -m SimpleHTTPServer 
 // Now on localHost:8000 (running index.html which calls functions in simpleLoop.js)
-// you hit server.js running on localHost:8080 (DIFFERENT PORT NUMBERS)
+// you hit server.js running on localHost:5000 (DIFFERENT PORT NUMBERS)
 
 
 function simpleLoop() {
@@ -14,9 +14,7 @@ function simpleLoop() {
     request = new XMLHttpRequest();
 
     // Step 2: Make request to remote resource
-    // NOTE: https://messagehub.herokuapp.com has cross-origin resource sharing enabled
-    // which is why why using this site doesn't break the same origin policy
-    request.open("get", "http://localhost:8080/simpleLoop", true);
+    request.open("get", "http://localhost:5000/simpleLoop", true);
 
     // Step 3: Create handler function to do something with data in response
     request.onreadystatechange = function () { //closure for getSchedule function
@@ -46,12 +44,21 @@ function postData(names) {
 
     var http = new XMLHttpRequest();
 
-    var url = "http://localhost:8080/";
-    var params = "lorem=ipsum&name=binny";
+    var url = "http://localhost:5000/";
+
+    // I already know names[0]['firstName'] = 'josie'
+    // and names[0]['lastName'] = 'barth'
+    var params = "firstName=" + names[0]['firstName'];
+    params += "&lastName=" + names[0]['lastName'];
+
+    // See console.log for http://localhost:8000/
+    // note - PORT 8000
+    console.log(params);
 
     http.open("POST", url, true);
 
-    //Send the proper header information along with the request
+    // Send the proper header information along with the request
+    // Josie's note - you'll want to modify this
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     http.onreadystatechange = function() {//Call a function when the state changes.

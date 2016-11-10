@@ -1,7 +1,7 @@
 // grab the packages we need
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5000;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
@@ -41,11 +41,17 @@ app.post('/', function(req, res) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     // Step 1: Process the data
-    theMessage = req.body.lorem;
+    theMessage = req.body.firstName;
     console.log("Someone sent a message: " + theMessage);
 
+    var theMessage = "This is a message from server.js.  I received your post request.\n";
+    theMessage += "Check your terminal where you ran $ node server.js\n";
+    theMessage += "You should see, 'Someone sent a message: josie'\n";
+    theMessage += "This is how the client: simpleLoop.js talks to the server: server.js";
+
+
     // Step 2: Send a confirmation
-    res.send("Thanks for playing!");
+    res.send(theMessage);
 
 });
 
