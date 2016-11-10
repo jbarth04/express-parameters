@@ -10,7 +10,7 @@ Code for the tutorial by @sevilayha: Use ExpressJS to Get URL and POST Parameter
 I wrote a little program that helped me clarify the difference
 between a server and client-side JavaScript 
 
-simpleLoop.js contains JavaScript functions that connects to a server on localHost:8080
+simpleLoop.js contains JavaScript functions that connects to a server on localhost:5000
 
 the code for the server is contained in the file server.js
 
@@ -29,9 +29,9 @@ and index.html calls functions in simpleLoop.js
 
 simpleLoop.js makes GET and POST requests to the server in server.js
 
-KEY INSIGHT - DIFFERENT PORT NUMBERS
+**** KEY INSIGHT - Client and Server are on different port numbers ****
 
-simpleLoop.js is running on localHost:8000
+simpleLoop.js is running on localhost:8000
 server.js running on localHost:5000 
 
 Thus through this simple program we can see the separation between client and server
